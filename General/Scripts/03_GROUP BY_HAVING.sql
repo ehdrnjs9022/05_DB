@@ -419,7 +419,7 @@ FROM
 WHERE		
 	DEPT_CODE  ='D5'--  6행
 	
-	MINUS -- 차집합 --4행
+	MINUS -- 차집합 --4
 
 -- 직급 코드가 'J7' 인 사원의 이름, 부서코드, 직급코드 조회
 SELECT 
