@@ -131,9 +131,46 @@ WHERE
 -- 나이는 '만'으로 계산한다.)
 	
 SELECT
-	PROFESSOR_NAME AS 교수이름, PROFESSOR_SSN AS 나이
+	PROFESSOR_NAME AS 교수이름,
+	FLOOR(MONTHS_BETWEEN
+			 (SYSDATE ,TO_DATE(SUBSTR(PROFESSOR_SSN,1,6) ,'YYYYMMDD' )) / 12 ) 
+				PROFESSOR_SSN AS 나이
 FROM
-	TB_PROFESSOR;
+	TB_PROFESSOR
+WHERE 
+	SUBSTR(PROFESSOR_SSN,8,1) = '1'
+ORDER BY
+	PROFESSOR_NAME ASC,
+	PROFESSOR_SSN ASC;
+
+-- 4번
+-- 교수들의 이름 중 성을 제외한 이름만 조회하시오. 
+-- 출력 헤더는 "이름"이 찍히도록 한다.
+-- (성이 2자인 경우의 교수는 없다고 가정)
+SELECT 
+	SUBSTR( PROFESSOR_NAME, 2) AS 이름
+FROM
+	TB_PROFESSOR
+WHERE
+	PROFESSOR_NAME LIKE '___';
+	
+-- 5번
+-- 춘 기술대학교의 재수생 입학자를 조회하시오.
+-- (19살에 입학하면 재수를 하지 않은 것!)
+
+SELECT 
+	STUDENT_NO ,
+	STUDENT_NAME 
+FROM
+	TB_STUDENT ;
+WHERE
+	TO_DATE(ENTRANCE_DATE - STUDENT_NO)
+
+3번 5번 모름
+
+
+
+
 
 
 	
