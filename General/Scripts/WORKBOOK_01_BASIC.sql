@@ -131,17 +131,16 @@ WHERE
 -- 나이는 '만'으로 계산한다.)
 	
 SELECT
-	PROFESSOR_NAME AS 교수이름,
+	PROFESSOR_NAME AS 교수이름,  
 	FLOOR(MONTHS_BETWEEN
-			 (SYSDATE ,TO_DATE(SUBSTR(PROFESSOR_SSN,1,6) ,'YYYYMMDD' )) / 12 ) 
-				PROFESSOR_SSN AS 나이
+	(SYSDATE, TO_DATE(SUBSTR( PROFESSOR_SSN,1,6),'RRMMDD')) /12)   AS 나이 
 FROM
 	TB_PROFESSOR
-WHERE 
-	SUBSTR(PROFESSOR_SSN,8,1) = '1'
-ORDER BY
-	PROFESSOR_NAME ASC,
-	PROFESSOR_SSN ASC;
+WHERE
+	TO_DATE(SUBSTR( PROFESSOR_SSN,1,6),'RRMMDD') < TO_DATE('1999-12-31','YYYY-MM-DD')
+ORDER BY 
+	나이 ASC ,
+	교수이름 ASC;
 
 -- 4번
 -- 교수들의 이름 중 성을 제외한 이름만 조회하시오. 
@@ -157,25 +156,53 @@ WHERE
 -- 5번
 -- 춘 기술대학교의 재수생 입학자를 조회하시오.
 -- (19살에 입학하면 재수를 하지 않은 것!)
-
+--> 입학 년도 - 태어난 년도 == 나이
+  
 SELECT 
 	STUDENT_NO ,
 	STUDENT_NAME 
 FROM
-	TB_STUDENT ;
-WHERE
-	TO_DATE(ENTRANCE_DATE - STUDENT_NO)
+	TB_STUDENT 
+WHERE 
+	FLOOR(MONTHS_BETWEEN
+	(ENTRANCE_DATE , TO_DATE(SUBSTR( STUDENT_SSN,1,6),'YYMMDD')) /12) ; AS 나이 	
 
 
+-- 6번
+-- 춘 기술대학교의 2000년도 이후 입학자들은 학번이 A로 시작하게 되어있다.
+-- 2000년도 이전 학번을 받은 학생들의 학번과 이름 조회하는 SQL을 작성하시오.
+
+SELECT 
+	STUDENT_NO ,STUDENT_NAME 
+FROM
+	TB_STUDENT 
+WHERE 
+ TO_DATE( SUBSTR(STUDENT_NO,1,6),'RRMMDD') 
+	< TO_DATE('2000-01-01','YYYY-MM-DD'); 
+
+-- 7번
+-- 학번이 A517178인 한아름 학생의 학점 총 평점을 구하는 SQL문을 작성하시오.
+-- 단, 이때 출력 화면의 헤더는 "평점"이라고 찍히게 하고,
+-- 점수는 반올림하여 소수점 이하 한자리까지만 표시한다
+SELECT 
+	ROUND( POINT ,1) AS 평점
+FROM
+	TB_STUDENT S
+JOIN 
+	TB_GRADE G ON (S.STUDENT_NO=G.STUDENT_NO)
+WHERE 
+	S.STUDENT_NAME  = '한아름';
+
+-- 8번
+-- 학과별 학생 수를 구하여 "학과번호", "학생수(명)"의 형태로 조회하시오.
+SELECT 
+	D.DEPARTMENT_NO 학과번호,COUNT(S.STUDENT_NAME )"학생수(명)"
+FROM
+	TB_STUDENT S
+JOIN 
+	TB_DEPARTMENT D ON (S.DEPARTMENT_NO=D.DEPARTMENT_NO)
 
 
-
-
-
-
-	
-	
-	
 	
 	
 
