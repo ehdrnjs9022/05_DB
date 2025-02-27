@@ -239,25 +239,6 @@ ALTER TABLE DEPT_COPY
 RENAME TO DCOPY;
 
 SELECT  * FROM DEPT_COPY; --테이블 또는 뷰가 존재하지 않습니다
-
 SELECT  * FROM DCOPY;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
