@@ -1,3 +1,13 @@
+EXTRAT : (YEAR FROM 000) - 날짜반환
+SUBSTR( ) - 문자열 반환 ( 숫자 자를시 TO_CHAR() 변환후 사용)
+MONTHS_BETWEEN() – 두 날짜 간 개월 수 반환 (숫자)
+
+✅ FROM → WHERE → SELECT → ORDER BY
+WHERE :  그룹화 이전에 개별 행(Row)을 필터링하는 역할
+HAVING :  그룹화된 결과를 필터링하는 역할
+FROM → WHERE → GROUPBY → HAVING → SELECT → ORDERBY
+GROUP BY 그룹으로 묶기 전 이라면 WHERE 쓸수있음
+
 
 DB : 공용으로 사용할 데이터를
 중복을 최소화하여 구조적모으는 곳
@@ -75,7 +85,7 @@ ROLLBACK : 트랜잭션을 삭제
 	    -> 마지막 COMMIT 상태로 돌아감
 
 SAVEPOINT : 트랜잭션에 저장 지점을 설정하여
-	     원하는 위치 까지만 ROLLBACK
+	     원하는 위치 까지만 ROLLBACK (1화용)
 
 -------------------------------------------------------------------------------------------------------
 
@@ -93,7 +103,7 @@ DATE        : 날짜 (TIMESTAMP : DATE + MS + UTC(세계협정시간)
 CHAR	   : 문자열, 고정 크기 (CHAR(3) 세칸중 한칸만 써도 3칸유지) ,최대 2000BYTE
 VARCAHR2 : 문자열, 가변 크기( VARCHAR2(3) 세칸중 한칸만 쓰면 뒤에칸 지워짐),최대 4000BYTE
 BLOB        : 이진(수) 데이터 저장(최대 4GB)
-CLOB        : 문자 데이터 저장(최대 4GB)
+CLOB        : 문자 데이터 저장(최대 4GB) (대용량가변)
 
 [제약 조건]
 - 정의 : 조건에 맞는 데이터만 유지하기 위해

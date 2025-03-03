@@ -185,6 +185,7 @@ DROP TABLE DEPT_COPY ;
 SELECT * FROM DEPT_COPY ;
 
 -- ** 관계가 형성된 테이블 삭제 **
+-- (부모)TB1 - TB2(자식) 관계 형성
 CREATE TABLE TB1(
 	TB1_PK NUMBER PRIMARY KEY,
 	TB1_COL NUMBER
@@ -196,7 +197,6 @@ CREATE TABLE TB2(
 		REFERENCES TB1(TB1_PK)
 );
 
--- (부모)TB1 - TB2(자식) 관계 형성
 
 -- (부모)TB1  삭제
 DROP TABLE TB1;
