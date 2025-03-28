@@ -145,6 +145,39 @@ ORDER
 SELECT * FROM TB_SPRING_BOARD ;
 
 
+-----------------------------------------------
+
+CREATE TABLE TB_COMMENTS(
+	CONTENT VARCHAR2(1000) NOT NULL,
+	CREATE_DATE DATE DEFAULT SYSDATE,
+	UC_SEQ NUMBER NOT NULL
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
