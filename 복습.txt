@@ -143,6 +143,8 @@ CLOB           : VARCHAR2의 대용량버전 최대 4GB
 -  컬럼, 테이블 레벨 둘다 가능
 - PRIMARY KEY 하위 호환
     ex) CHECK (GENDER IN (‘남’, ‘여‘)) 값 이외에 오류
+ALTER USER C##PROJECTCP QUOTA UNLIMITED ON USERS;
+
 
 
 
